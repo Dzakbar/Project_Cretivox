@@ -99,7 +99,7 @@ export default function LoginPage() {
   return (
     <main ref={pageRef} className="login">
       <form ref={formRef} className="login__form" onSubmit={handleSubmit}>
-        <p className="login__label">masuk untuk melanjutkan</p>
+        <p className="login__label">Login Untuk Eksplorasi</p>
         <label className="login__field">
           <span className="visually-hidden">username</span>
           <input
