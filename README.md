@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jakbar Story
 
-## Getting Started
+Jakbar Story adalah web story sinematik berbasis scroll yang memperkenalkan Jakbar melalui rangkaian scene: login, hero, skills, perjalanan di luar kode, mimpi, dan monologue penutup.
 
-First, run the development server:
+Project ini dibuat dengan Next.js App Router, React, GSAP ScrollTrigger, Lenis smooth scroll, dan Howler untuk musik latar.
+
+## Fitur
+
+- Login sederhana sebelum masuk ke cerita utama.
+- Scroll-driven storytelling dengan scene yang dipin menggunakan GSAP ScrollTrigger.
+- Animasi split text per huruf tanpa memecah kata di tengah baris.
+- Layer foto, vignette, video, dan musik yang berubah mengikuti progres cerita.
+- Layout skills responsive yang tetap terbaca di desktop, tablet, dan mobile.
+- Media optimized menggunakan format WebP untuk gambar yang tampil di halaman.
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- GSAP
+- Lenis
+- Howler
+- CSS global custom
+
+## Struktur Project
+
+```text
+src/
+  app/
+    page.tsx              # Login page
+    main/page.tsx         # Protected story page
+    layout.tsx            # Font, metadata, root layout
+    globals.css           # Styling global dan responsive layout
+  components/
+    Hero.tsx
+    Skills.tsx
+    Outside.tsx
+    Dream.tsx
+    Monologue.tsx
+    SplitText.tsx
+    story/
+      PhotoLayer.tsx
+      SceneLayer.tsx
+      StoryStage.tsx
+  lib/
+    useMusic.ts
+    useSmoothScroll.ts
+    useStoryTimeline.ts
+public/
+  images/optimized/       # Gambar yang dipakai app
+  music/song.mp3          # Musik latar
+  videos/mainvideo.mp4    # Video scene dream
+```
+
+## Menjalankan Project
+
+Install dependency:
+
+```bash
+npm install
+```
+
+Jalankan development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Untuk membuat build production:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Untuk menjalankan hasil build:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Login
 
-## Deploy on Vercel
+Halaman awal menggunakan endpoint demo `https://dummyjson.com/auth/login`.
+Gunakan kredensial valid dari DummyJSON Auth untuk masuk ke `/main`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Token disimpan di `sessionStorage`, sehingga akses akan reset ketika session browser ditutup.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Catatan Development
+
+- Saat development, gunakan `npm run dev`; tidak perlu build ulang setiap edit.
+- Jika browser tidak auto-refresh, pastikan file sudah disimpan lalu lakukan hard refresh dengan `Ctrl+Shift+R`.
+- Jika cache Next.js bermasalah, hentikan dev server, hapus `.next`, lalu jalankan `npm run dev` lagi.
+- Build membutuhkan koneksi internet saat Next mengambil Google Fonts melalui `next/font`.
+
+## Media
+
+App hanya mereferensikan gambar di `public/images/optimized`.
+File gambar mentah di `public/images` sengaja di-ignore agar repo tetap ringan dan commit tidak membawa aset besar yang tidak dipakai.
+
+## Deployment
+
+Project dapat dideploy ke platform yang mendukung Next.js, seperti Vercel.
+
+Pastikan aset berikut ikut tersedia di repository/deployment:
+
+- `public/images/optimized`
+- `public/music/song.mp3`
+- `public/videos/mainvideo.mp4`
+
+## Repository
+
+GitHub: https://github.com/Dzakbar/Project_Cretivox
