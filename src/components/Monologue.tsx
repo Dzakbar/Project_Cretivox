@@ -4,9 +4,9 @@ export function Monologue() {
   return (
     <div className="monologue__inner">
       <p className="monologue__line serif">
-        <SplitText text="Ada satu hal yang belum pernah aku bilang." />
+        <SplitText text="Ada hal yang ingin kusampaikan." />
       </p>
-      <p className="monologue__soon serif">Segera.</p>
+      <p className="monologue__soon serif">Sampai bertemu di Talent Day.</p>
     </div>
   );
 }
